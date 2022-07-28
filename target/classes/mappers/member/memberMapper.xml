@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.member.dao.MemberDAO">
+	<resultMap type="com.care.root.member.dto.MemberDTO" id="member"> <!-- DB의 데이터와 DTO의 데이터를 맵핑하는 작업 -->
+		<id property="id" column="id" /> <!-- PK(프라이머리키) -->
+		<result property="name" column="name"/> <!-- 일반적인 값 -->
+	</resultMap>
+	
+	<insert id="insert"><!-- id와 메소드명이 같은 것만 찾아감 -->
+		insert into test_mybatis values(#{id},#{name}) <!-- getter가 반드시 필요하다 -->
+	</insert>
+	<select id="getMember" resultMap="member">
+		select * from test_mybatis
+	</select>
+</mapper>
